@@ -15,20 +15,21 @@
 
 import inet.node.inet.AdhocHost;
 
+//import inet.routing.aodv.Aodv;
+
 module Node extends AdhocHost  
 {
 	parameters:
-	    int address;
-	    string appType;
-	    @display("i=misc/node_vs,gold");
+//	    @display("i=misc/node_vs,gold");
   	    
     submodules:
-        tarp: <appType> like TarpApp {
-            parameters:
-                address = address;
-                @display("p=140,60");
-        }
+//        tarp: Aodv {
+//            parameters:
+//                @display("p=825,226");
+//        }
 	connections:
-        tarp.socketOut --> at.in++;
-        tarp.socketIn <-- at.out++;
+//        tarp.ipOut --> tn.in++;
+//        tarp.ipIn <-- tn.out++;
+//          tarp.socketOut --> at.in++;
+//          tarp.socketIn <-- at.out++;
 }

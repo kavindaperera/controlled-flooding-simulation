@@ -30,11 +30,11 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/App.o $O/Packet_m_m.o
+OBJS = $O/TarpApp.o $O/TarpBasicApp.o $O/TarpMessage_m.o
 
 # Message files
 MSGFILES = \
-    Packet_m.msg
+    TarpMessage.msg
 
 # SM files
 SMFILES =
@@ -83,6 +83,9 @@ endif
 #------------------------------------------------------------------------------
 # User-supplied makefile fragment(s)
 # >>>
+# inserted from file 'makefrag':
+MSGC:=$(MSGC) --msg6
+
 # <<<
 #------------------------------------------------------------------------------
 

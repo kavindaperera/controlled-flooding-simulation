@@ -11,24 +11,14 @@
 // 
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see http://www.gnu.org/licenses/.
-// 
-
-//
-// TODO auto-generated module
 //
 
+import inet.common.INETDefs;
+import inet.common.packet.chunk.Chunk;
 
-import inet.applications.contract.IApp;
-
-import inet.routing.contract.IManetRouting;
-
-
-simple TarpApp like IManetRouting
+class TarpPacket extends inet::FieldsChunk
 {
-	parameters:
-        @display("i=block/network2");
-
- 	gates:
-        input ipIn;
-        output ipOut;
+	int srcAddr;
+    int destAddr; // also contain neighbour in Hello msgs
+    int hops; // maximum length of the path that the packet is allowed to travel expressed as the number of hops  
 }

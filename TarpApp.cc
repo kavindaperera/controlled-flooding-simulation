@@ -13,22 +13,23 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-//
-// TODO auto-generated module
-//
+#include "TarpApp.h"
 
+Define_Module(TarpApp);
 
-import inet.applications.contract.IApp;
-
-import inet.routing.contract.IManetRouting;
-
-
-simple TarpApp like IManetRouting
+void TarpApp::initialize()
 {
-	parameters:
-        @display("i=block/network2");
+    // TODO - Generated method body
 
- 	gates:
-        input ipIn;
-        output ipOut;
+    numSent = 0;
+    numReceived = 0;
+
+    WATCH(numSent);
+    WATCH(numReceived);
+
+}
+
+void TarpApp::handleMessage(cMessage *msg)
+{
+    // TODO - Generated method body
 }

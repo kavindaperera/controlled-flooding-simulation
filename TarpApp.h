@@ -13,22 +13,30 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-//
-// TODO auto-generated module
-//
+#ifndef __TARP_SIM_TARPAPP_H_
+#define __TARP_SIM_TARPAPP_H_
 
+#include <omnetpp.h>
 
-import inet.applications.contract.IApp;
+using namespace omnetpp;
 
-import inet.routing.contract.IManetRouting;
-
-
-simple TarpApp like IManetRouting
+/**
+ * TODO - Generated class
+ */
+class TarpApp : public cSimpleModule
 {
-	parameters:
-        @display("i=block/network2");
 
- 	gates:
-        input ipIn;
-        output ipOut;
-}
+    private:
+        // configuration
+
+
+        // statistics
+        int numSent = 0;
+        int numReceived = 0;
+    protected:
+        virtual void initialize();
+        virtual void handleMessage(cMessage *msg);
+
+};
+
+#endif
