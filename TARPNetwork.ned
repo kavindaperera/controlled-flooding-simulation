@@ -22,20 +22,20 @@ import inet.node.inet.INetworkNode;
 network TARPNetwork
 {
     parameters:
-        @display("bgb=600,600;bgg=100,1,1grey95");
+        @display("bgb=500,500;bgg=100,1,1grey95");
         int numNodes @prompt("Number of nodes") = default(9);
      
     submodules:
         visualizer: <default(firstAvailableOrEmpty("IntegratedCanvasVisualizer"))> like IIntegratedVisualizer if typename != "" {
-            @display("p=580,100");
+            @display("p=460,100");
         }
         
         radioMedium: <default("UnitDiskRadioMedium")> like IRadioMedium {
-	    	@display("p=580,300");
+	    	@display("p=460,300");
 	    }
 	    
 	    configurator: Ipv4NetworkConfigurator {
-            @display("p=580,200");
+            @display("p=460,200");
         }
         
         node[numNodes]: <default("AdhocHost")> like INetworkNode {
@@ -43,11 +43,11 @@ network TARPNetwork
 	    } 
 	    
 	    nodeA: <default("AdhocHost")> like INetworkNode {
-	    	@display("p=100,500");
+	    	@display("p=100,400");
 	    }
 	    
 	    nodeB: <default("AdhocHost")> like INetworkNode {
-	    	@display("p=500,100");
+	    	@display("p=400,100");
 	    }
         
     connections allowunconnected:    

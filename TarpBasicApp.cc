@@ -40,9 +40,8 @@ using inet::EchoPacket;
 Define_Module(TarpBasicApp);
 
 const std::map<const Protocol*, const Protocol*> TarpBasicApp::l3Echo( {
-
 { &Protocol::flooding, &Protocol::echo },
-
+{ &Protocol::tarpf, &Protocol::echo }
 });
 
 TarpBasicApp::TarpBasicApp() {
