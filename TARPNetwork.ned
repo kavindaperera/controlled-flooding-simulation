@@ -24,6 +24,18 @@ network TARPNetwork
     parameters:
         @display("bgb=500,500;bgg=100,1,1grey95");
         int numNodes @prompt("Number of nodes") = default(9);
+        
+       	@figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
+       	
+       	@figure[rcvdPkText](type=indicatorText; pos=510,60; anchor=w; font=,12; textFormat="packets received by A: %g"; initialValue=0);
+        @statistic[packetReceived](source=nodeA.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
+	    
+	    @figure[rcvdPkText2](type=indicatorText; pos=510,40; anchor=w; font=,12; textFormat="packets received by B: %g"; initialValue=0);
+        @statistic[packetSentBack](source=nodeB.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText2);
+        
+        @figure[sntPkText](type=indicatorText; pos=510,20; anchor=w; font=,12; textFormat="packets sent by A: %g"; initialValue=0);
+        @statistic[packetSent](source=nodeA.app[0].packetSent; record=figure(count); targetFigure=sntPkText);
+
      
     submodules:
         visualizer: <default(firstAvailableOrEmpty("IntegratedCanvasVisualizer"))> like IIntegratedVisualizer if typename != "" {
