@@ -27,14 +27,15 @@ network TARPNetwork
         
        	@figure[title](type=label; pos=0,-1; anchor=sw; color=darkblue);
        	
-       	@figure[rcvdPkText](type=indicatorText; pos=510,60; anchor=w; font=,12; textFormat="packets received by A: %g"; initialValue=0);
-        @statistic[packetReceived](source=nodeA.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
-	    
-	    @figure[rcvdPkText2](type=indicatorText; pos=510,40; anchor=w; font=,12; textFormat="packets received by B: %g"; initialValue=0);
-        @statistic[packetSentBack](source=nodeB.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText2);
-        
-        @figure[sntPkText](type=indicatorText; pos=510,20; anchor=w; font=,12; textFormat="packets sent by A: %g"; initialValue=0);
-        @statistic[packetSent](source=nodeA.app[0].packetSent; record=figure(count); targetFigure=sntPkText);
+//       	@figure[rcvdPkText](type=indicatorText; pos=510,60; anchor=w; font=,12; textFormat="packets received by A: %g"; initialValue=0);
+//        @statistic[packetReceived](source=nodeA.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText);
+//	    
+//	    @figure[rcvdPkText2](type=indicatorText; pos=510,40; anchor=w; font=,12; textFormat="packets received by B: %g"; initialValue=0);
+//        @statistic[packetSentBack](source=nodeB.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText2);
+//        
+//        @figure[sntPkText](type=indicatorText; pos=510,20; anchor=w; font=,12; textFormat="packets sent by A: %g"; initialValue=0);
+//        @statistic[packetSent](source=nodeA.app[0].packetSent; record=figure(count); targetFigure=sntPkText);
+
 
      
     submodules:
@@ -46,21 +47,21 @@ network TARPNetwork
 	    	@display("p=460,300");
 	    }
 	    
-	    configurator: Ipv4NetworkConfigurator {
-            @display("p=460,200");
-        }
+//	    configurator: Ipv4NetworkConfigurator {
+//            @display("p=460,200");
+//        }
         
         node[numNodes]: <default("AdhocHost")> like INetworkNode {
 	    	@display("i=device/pocketpc_s;r=,,#707070");
 	    } 
 	    
-	    nodeA: <default("AdhocHost")> like INetworkNode {
-	    	@display("p=100,400");
-	    }
-	    
-	    nodeB: <default("AdhocHost")> like INetworkNode {
-	    	@display("p=400,100");
-	    }
+//	    nodeA: <default("AdhocHost")> like INetworkNode {
+//	    	@display("p=100,400");
+//	    }
+//	    
+//	    nodeB: <default("AdhocHost")> like INetworkNode {
+//	    	@display("p=400,100");
+//	    }
         
     connections allowunconnected:    
 }
