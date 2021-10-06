@@ -19,7 +19,7 @@
 
 import inet.applications.contract.IApp;
 
-simple TarpBasicApp like IApp
+simple TarpPingApp like IApp
 {
     parameters:
         string destAddr = default(""); // destination address, "*" means all

@@ -30,7 +30,7 @@ PROJECTRELATIVE_PATH =
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc, .msg and .sm files
-OBJS = $O/TarpApp.o $O/TarpBasicApp.o $O/TarpMessage_m.o
+OBJS = $O/TarpApp.o $O/TarpPingApp.o $O/TarpMessage_m.o
 
 # Message files
 MSGFILES = \

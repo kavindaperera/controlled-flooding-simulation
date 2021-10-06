@@ -13,7 +13,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#include "TarpBasicApp.h"
+#include "TarpPingApp.h"
 
 #include <iostream>
 
@@ -37,22 +37,22 @@ using inet::ByteCountChunk;
 using inet::B;
 using inet::EchoPacket;
 
-Define_Module(TarpBasicApp);
+Define_Module(TarpPingApp);
 
-const std::map<const Protocol*, const Protocol*> TarpBasicApp::l3Echo( {
+const std::map<const Protocol*, const Protocol*> TarpPingApp::l3Echo( {
 { &Protocol::flooding, &Protocol::echo },
 { &Protocol::tarpf, &Protocol::echo }
 });
 
-TarpBasicApp::TarpBasicApp() {
+TarpPingApp::TarpPingApp() {
 }
 
-TarpBasicApp::~TarpBasicApp() {
+TarpPingApp::~TarpPingApp() {
     cancelAndDelete(event);
     socketMap.deleteSockets();
 }
 
-void TarpBasicApp::initialize(int stage) {
+void TarpPingApp::initialize(int stage) {
 
     // TODO - Generated method body
 
@@ -86,7 +86,7 @@ void TarpBasicApp::initialize(int stage) {
 
 }
 
-void TarpBasicApp::parseDestAddressesPar() {
+void TarpPingApp::parseDestAddressesPar() {
     srcAddr = L3AddressResolver().resolve(par("srcAddr"));
     const char *destAddrs = par("destAddr");
     if (!strcmp(destAddrs, "*")) {
@@ -102,7 +102,7 @@ void TarpBasicApp::parseDestAddressesPar() {
     }
 }
 
-void TarpBasicApp::handleSelfMessage(cMessage *msg) {
+void TarpPingApp::handleSelfMessage(cMessage *msg) {
 
     if (msg == event) {
 
@@ -170,7 +170,7 @@ void TarpBasicApp::handleSelfMessage(cMessage *msg) {
 
 }
 
-void TarpBasicApp::handleMessage(cMessage *msg) {
+void TarpPingApp::handleMessage(cMessage *msg) {
     // TODO - Generated method body
     if (msg->isSelfMessage()) {
         handleSelfMessage(msg);
@@ -178,13 +178,13 @@ void TarpBasicApp::handleMessage(cMessage *msg) {
 
 }
 
-void TarpBasicApp::refreshDisplay() const {
+void TarpPingApp::refreshDisplay() const {
     char buf[100];
     sprintf(buf, "rcvd: %d pks\nsent: %d pks", numReceived, numSent);
     getDisplayString().setTagArg("t", 0, buf);
 }
 
-void TarpBasicApp::handleMessageWhenUp(cMessage *msg) {
+void TarpPingApp::handleMessageWhenUp(cMessage *msg) {
 
     throw cRuntimeError("Debug::handleMessageWhenUp");
 
@@ -194,32 +194,32 @@ void TarpBasicApp::handleMessageWhenUp(cMessage *msg) {
 
 }
 
-void TarpBasicApp::handleStartOperation(LifecycleOperation *operation) {
+void TarpPingApp::handleStartOperation(LifecycleOperation *operation) {
     startSendingMessages();
 }
 
-void TarpBasicApp::startSendingMessages() {
+void TarpPingApp::startSendingMessages() {
     scheduleAt(simTime(), event);
 }
 
-void TarpBasicApp::handleStopOperation(LifecycleOperation *operation) {
+void TarpPingApp::handleStopOperation(LifecycleOperation *operation) {
     if (socketMap.size() > 0) {
         for (auto socket : socketMap.getMap())
             socket.second->close();
     }
 }
 
-void TarpBasicApp::handleCrashOperation(LifecycleOperation *operation) {
+void TarpPingApp::handleCrashOperation(LifecycleOperation *operation) {
     for (auto socket : socketMap.getMap())
         socket.second->destroy();
     socketMap.deleteSockets();
 }
 
-void TarpBasicApp::socketDataArrived(INetworkSocket *socket, Packet *packet) {
+void TarpPingApp::socketDataArrived(INetworkSocket *socket, Packet *packet) {
 
 }
 
-void TarpBasicApp::socketClosed(INetworkSocket *socket) {
+void TarpPingApp::socketClosed(INetworkSocket *socket) {
     if (socket == currentSocket)
         currentSocket = nullptr;
     delete socketMap.removeSocket(socket);

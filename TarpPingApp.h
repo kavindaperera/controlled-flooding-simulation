@@ -13,8 +13,8 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __TARP_SIM_TARPBASICAPP_H_
-#define __TARP_SIM_TARPBASICAPP_H_
+#ifndef __TARP_SIM_TARPPINGAPP_H_
+#define __TARP_SIM_TARPPINGAPP_H_
 
 #include <omnetpp.h>
 
@@ -41,7 +41,7 @@ using inet::ApplicationBase;
 /**
  * TODO - Generated class
  */
-class TarpBasicApp : public ApplicationBase, public INetworkSocket::ICallback
+class TarpPingApp : public ApplicationBase, public INetworkSocket::ICallback
 {
     protected:
 
@@ -94,8 +94,8 @@ class TarpBasicApp : public ApplicationBase, public INetworkSocket::ICallback
         virtual void handleCrashOperation(LifecycleOperation *operation) override;
 
     public:
-        TarpBasicApp();
-        virtual ~TarpBasicApp();
+        TarpPingApp();
+        virtual ~TarpPingApp();
 
 };
 
