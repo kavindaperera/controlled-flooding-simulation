@@ -33,8 +33,8 @@ network TARPNetwork
 //	    @figure[rcvdPkText2](type=indicatorText; pos=510,40; anchor=w; font=,12; textFormat="packets received by B: %g"; initialValue=0);
 //        @statistic[packetSentBack](source=nodeB.app[0].packetReceived; record=figure(count); targetFigure=rcvdPkText2);
 //        
-//        @figure[sntPkText](type=indicatorText; pos=510,20; anchor=w; font=,12; textFormat="packets sent by A: %g"; initialValue=0);
-//        @statistic[packetSent](source=nodeA.app[0].packetSent; record=figure(count); targetFigure=sntPkText);
+        @figure[sntPkText](type=indicatorText; pos=510,20; anchor=w; font=,12; textFormat="packets sent: %g"; initialValue=0);
+        @statistic[packetSent](source=node[17].app[0].packetSent; record=figure(count); targetFigure=sntPkText);
 
 
      
